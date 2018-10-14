@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -20,6 +15,45 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.circle{
+  position:absolute;
+  z-index:2
+}
+
+.double{
+  height:250px;
+  z-index:5;
+}
+
+.btn{
+  cursor:pointer;
+}
+
+.btn2{
+  cursor:pointer;
+}
+
+.page{
+  height:500px;
+  width:400px;
+  background-color:#EBE6DF;
+  border-radius:20px;
+  outline-style: solid;
+  outline-color: #EBE6DF;
+  border-style:solid;
+  border-color:#282c34;
+}
+
+.name{
+  color:black;
+}
+
+.but{
+  width:100px;
+  height:40px;
+  font-size:16px;
 }
 
 @keyframes App-logo-spin {
