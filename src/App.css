@@ -2,7 +2,17 @@
   text-align: center;
 }
 
-.App-header {
+.App-header1 {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-header2{
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -17,14 +27,23 @@
   color: #61dafb;
 }
 
-.circle{
+.circ{
   position:absolute;
-  z-index:2
+  z-index:2;
+  width:400px;
+  height:400px;
+  background:transparent;
+  border-radius:50%;
+  border-style:dotted;
+  border-width:6px;
+  border-color:#EBE6DF;
+  margin-top:100px;
 }
 
 .double{
   height:250px;
   z-index:5;
+  margin-top:170px;
 }
 
 .btn{
@@ -36,31 +55,105 @@
 }
 
 .page{
-  height:500px;
-  width:400px;
+  height:600px;
+  width:500px;
   background-color:#EBE6DF;
-  border-radius:20px;
+  border-radius:10px;
   outline-style: solid;
   outline-color: #EBE6DF;
   border-style:solid;
   border-color:#282c34;
 }
 
+.inner{
+  width:370px;
+  height:370px;
+  margin: 0 auto;
+}
+
+.h1{
+  color:black;
+  text-align:left;
+}
+
+.h2{
+  color:black;
+  text-align:left;
+}
+
 .name{
   color:black;
+  font-family: 'Lora', serif;
+  font-weight: normal;
+  font-size:34px;
 }
 
 .but{
-  width:100px;
-  height:40px;
-  font-size:16px;
+  width:120px;
+  height:30px;
+  font-size:14px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.but0{
+  width:120px;
+  height:30px;
+  font-size:14px;
+  float:left;
+  margin-left:63px;
+  margin-top:30px;
+}
+
+.but2{
+  width:120px;
+  height:42px;
+  font-size:14px;
+  margin-left:240px;
+}
+
+.but3{
+  width:120px;
+  height:30px;
+  font-size:14px;
+  margin-left:240px;
+}
+
+.marg{
+  margin-top:6px;
+}
+
+.rule{
+  width:359px;
+  float:left;
+}
+
+.sel{
+  width:50px;
+  height:30px;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.freq{
+  color:black;
+}
+
+.log{
+  width:359px;
+  background-color:white;
+  height:200px;
+  font-size:15px;
+  margin-top:10px;
+  padding-top:8px;
+  padding-left:15px;
+  color:#262626;
+  box-sizing: border-box;
+}
+
+.hide{
+  visibility:hidden;
+}
+
+span{
+  color:black;
+  font-size:16px;
 }
