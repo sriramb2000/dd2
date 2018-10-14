@@ -36,7 +36,7 @@ class App extends Component {
             <div className="page">
               <UserData user={this.props.user}/>
               <br/>
-              <button className="but0" onClick={signOut}>SIGNOUT</button>
+              <button className="btn c" onClick={signOut}>SIGNOUT</button>
             </div>
           </header>
 
@@ -49,7 +49,7 @@ class App extends Component {
           <div className="circ"></div>
           <div className="double">
             <h1>dd2</h1>
-            <img className="btn" onClick={signInWithGoogle} src="btn.png"/>
+            <img className="btn1" onClick={signInWithGoogle} src="btn.png"/>
           </div>
         </header>
       </div>
@@ -58,22 +58,25 @@ class App extends Component {
   }
 }
 
-const FREQUENCY = 1000;
+const FREQUENCY = 462;
 class UserData extends Component {
 
   constructor(){
       super();
       console.log(FREQUENCY);
       var mic = new Tone.UserMedia().toMaster();
+      var synth = new Tone.Synth().toMaster();
       var text = "";
       var frequency = FREQUENCY;
       this.state = {
         "mic": mic,
+        synth: synth,
         micon: false,
+        staton: false,
         text,
         frequency,
+        terminatingMsg: ""
       };
-      this.handleClickStat = this.handleClickStat.bind(this);
       this.handleClickVar = this.handleClickVar.bind(this);
       this.handleClickRec = this.handleClickRec.bind(this);
       this.handleToggle = this.handleToggle.bind(this);
@@ -89,50 +92,58 @@ class UserData extends Component {
     });
   }
 
-  handleClickStat(){
-    var synth = new Tone.Synth().toMaster();
-
-    if (!Tone.UserMedia.supported){
-      console.log('nein');
-    } else {
-      synth.triggerAttackRelease("C4", 100);
-      this.setState({
-        "text": "Emitting at " + this.state.frequency + "Hz"
-      });
-    }
-  }
-
   handleClickVar(){
-    var synth = new Tone.Synth().toMaster();
+    this.setState({
+      terminatingMsg:""
+    });
+    this.handleToggles();
 
     if (!Tone.UserMedia.supported){
           console.log('nein');
         } else {
-          synth.triggerAttackRelease('G4', '1n');
-
-          console.log(this.state.mic);
+          this.state.synth.triggerAttackRelease('G4', '8n');
           this.setState({micon:true});
-          console.log(this.state.micon);
+
           this.state.mic.open().then(function(){
-            
+
           });
           this.setState({
-            "text": "Emitting at " + this.state.frequency + "Hz"
+            "text": "Emitting at " + this.state.frequency + "MHz"
           });
     }
   }
 
   handleClickRec(){
+      this.setState({
+        terminatingMsg:""
+      });
+      this.handleToggles();
+      var text  = "Receiving at " + this.state.frequency + "MHz"
+      this.setState({"text":text});
 
   }
 
-  handleToggle(){
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  handleToggles(){
+    this.state.mic.close();
+
+  }
+
+  async handleToggle(){
     console.log("tog");
 
     this.state.mic.close();
-    var text = "";
+    var text = "Terminating connection...";
     this.setState({
       text
+    });
+    await this.sleep(1500);
+    this.setState({
+      text: "Terminating connection...",
+      terminatingMsg: "Connection terminated"
     });
   }
 
@@ -148,42 +159,36 @@ class UserData extends Component {
   render(){
     return (
       <div>
-        <h1 className="name">{this.props.user.displayName}</h1>
-        <div className="inner">
-          <div className="h1">
-            <span>
-            frequency (power) : &nbsp;
-            </span>
-            <select className="sel" name="cars">
-              <option value="250">250</option>
-              <option value="300">300</option>
-              <option value="350">350</option>
-              <option value="400">400</option>
-              <option value="450">450</option>
-            </select>
-            <span> mHz &nbsp;</span>
-            <button className="but" onClick={this.handleClickStat}>send radio</button> <br/>
+        <h1 className="k black-text">{this.props.user.displayName}</h1>
+        <div className="row info">
+          Transmitting frequency: {this.state.frequency} MHz <br/>
+          Instructions: connect to radio module through audio jack, then press send or receive. <br/>
+        </div>
+        <div className="row pad">
+            <div className="col s4 bt">
 
-            <button className="but2" onClick={this.handleClickVar}>send variable radio</button> <br/>
-          </div>
-          <div className="h2">
-            <span>
-            frequency (power) : &nbsp;
-            </span>
-            <select className="sel" name="cars">
-              <option value="250">250</option>
-              <option value="300">300</option>
-              <option value="350">350</option>
-              <option value="400">400</option>
-              <option value="450">450</option>
-            </select>
-            <span> mHz &nbsp;</span>
-            <button className="but" onClick={this.handleClickRec}>receive radio</button>
-            <hr className="rule"/>
-            <button className="but3 marg" onClick={this.handleToggle}>close radio</button>
-            <div className="log">
-              {this.state.text}
+              <div className="a">
+                <button className="btn a light-green darken-2" onClick={this.handleClickVar}><i className="fas fa-broadcast-tower "></i></button> <br/>
+              </div>
+              <div className="smol">send</div>
             </div>
+            <div className="col s4 bt">
+              <div>
+                <button className="btn a pink darken-2" onClick={this.handleClickRec}><i className="fas fa-bolt"></i></button> <br/>
+              </div>
+              <div className="smol">receive</div>
+            </div>
+            <div className="col s4 bt">
+              <div>
+              <button className="btn a red accent-4"onClick={this.handleToggle}><i className="fas fa-stop"></i></button> <br/>
+              </div>
+              <div className="smol">close</div>
+            </div>
+        </div>
+        <div className="row lr">
+          <div className="log">
+            {this.state.text} <br/>
+            <span className="green-text"> {this.state.terminatingMsg} </span>
           </div>
         </div>
       </div>

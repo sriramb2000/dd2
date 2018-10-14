@@ -46,34 +46,54 @@
   margin-top:170px;
 }
 
-.btn{
+.btn1{
   cursor:pointer;
 }
 
-.btn2{
-  cursor:pointer;
+.a{
+  flex:1;
+}
+
+.c{
+  margin-top:-70px;
+}
+
+.bt{
+  display:flex;
+}
+
+.pad{
+  padding-right:20px;
+  padding-left:20px;
+}
+
+.k{
+  margin-top:30px;
+  font-size:42px;
 }
 
 .page{
   height:600px;
-  width:500px;
+  width:470px;
   background-color:#EBE6DF;
   border-radius:10px;
-  outline-style: solid;
-  outline-color: #EBE6DF;
   border-style:solid;
   border-color:#282c34;
-}
-
-.inner{
-  width:370px;
-  height:370px;
-  margin: 0 auto;
 }
 
 .h1{
   color:black;
   text-align:left;
+}
+
+.smol{
+  font-size:17px;
+}
+
+.bt{
+  display:flex;
+  flex-direction:column;
+  color:black;
 }
 
 .h2{
@@ -83,7 +103,6 @@
 
 .name{
   color:black;
-  font-family: 'Lora', serif;
   font-weight: normal;
   font-size:34px;
 }
@@ -92,38 +111,6 @@
   width:120px;
   height:30px;
   font-size:14px;
-}
-
-.but0{
-  width:120px;
-  height:30px;
-  font-size:14px;
-  float:left;
-  margin-left:63px;
-  margin-top:30px;
-}
-
-.but2{
-  width:120px;
-  height:42px;
-  font-size:14px;
-  margin-left:240px;
-}
-
-.but3{
-  width:120px;
-  height:30px;
-  font-size:14px;
-  margin-left:240px;
-}
-
-.marg{
-  margin-top:6px;
-}
-
-.rule{
-  width:359px;
-  float:left;
 }
 
 .sel{
@@ -136,17 +123,36 @@
 .freq{
   color:black;
 }
-
+.blak{
+  color:black;
+}
 .log{
-  width:359px;
-  background-color:white;
+  text-align:left;
+  background-color:black;
   height:200px;
+  flex:1;
   font-size:15px;
   margin-top:10px;
-  padding-top:8px;
+  padding-top:12px;
   padding-left:15px;
-  color:#262626;
+  color:white;
   box-sizing: border-box;
+  border-radius:6px;
+  font-family: 'Inconsolata', monospace;
+}
+
+.lr{
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.info{
+  color:black;
+  font-size:16px;
+  padding-left:33px;
+  padding-right:33px;
+  text-align:left;
+
 }
 
 .hide{
