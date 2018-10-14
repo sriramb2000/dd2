@@ -48,7 +48,7 @@ class App extends Component {
         <header className="App-header1">
           <div className="circ"></div>
           <div className="double">
-            <h1>dd2</h1>
+            <h1>rpb</h1>
             <img className="btn1" onClick={signInWithGoogle} src="btn.png"/>
           </div>
         </header>
